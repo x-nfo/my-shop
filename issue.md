@@ -66,8 +66,8 @@ Storefront harus bisa mengambil data produk dari Backend Vendure.
 3. Buat satu *query* GraphQL sederhana di halaman *Home* (misalnya mengambil daftar `products` 5 baris pertama) dan tampilkan nama-nama produk tersebut di layar menggunakan komponen React.
 
 **Kriteria Penerimaan:**
-- [ ] Tidak ada eror CORS (Pastikan Vendure Server mengizinkan CORS *request* dari *port* Storefront).
-- [ ] Data produk dari *backend* berhasil dirender di halaman utama frontend secara *headless*.
+- [x] Tidak ada eror CORS (Pastikan Vendure Server mengizinkan CORS *request* dari *port* Storefront).
+- [x] Data produk dari *backend* berhasil dirender di halaman utama frontend secara *headless*.
 
 ---
 

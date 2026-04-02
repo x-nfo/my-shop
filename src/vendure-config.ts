@@ -28,6 +28,10 @@ export const config: VendureConfig = {
             adminApiDebug: true,
             shopApiDebug: true,
         } : {}),
+        cors: {
+            origin: true,
+            credentials: true,
+        },
     },
     authOptions: {
         tokenMethod: ['bearer', 'cookie'],
