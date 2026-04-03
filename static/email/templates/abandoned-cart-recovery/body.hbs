@@ -1,0 +1,19 @@
+{{> header }}
+
+<table align="center" border="0" cellpadding="0" cellspacing="0" width="100%">
+    <tr>
+        <td align="left" style="padding: 20px 0 30px 0; color: #153643; font-family: Arial, sans-serif; font-size: 16px; line-height: 20px;">
+            <p>Halo {{ firstName }} {{ lastName }},</p>
+            <p>Kami melihat Anda meninggalkan beberapa item di keranjang belanja Anda sekitar {{ abandonedHours }} jam yang lalu.</p>
+            <p>Jangan sampai kehabisan! Anda memiliki <b>{{ itemCount }}</b> item yang menunggu untuk Anda bawa pulang.</p>
+            <p>Klik tombol di bawah ini untuk melanjutkan pesanan Anda:</p>
+            <p align="center">
+                <a href="{{ recoveryUrl }}" style="background-color: #4CAF50; color: white; padding: 14px 25px; text-align: center; text-decoration: none; display: inline-block; border-radius: 4px;">Selesaikan Pesanan Sekarang</a>
+            </p>
+            <p>Kode Pesanan: <b>{{ orderCode }}</b></p>
+            <p>Terima kasih telah berbelanja di My Shop!</p>
+        </td>
+    </tr>
+</table>
+
+{{> footer }}
