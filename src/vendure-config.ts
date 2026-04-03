@@ -11,6 +11,13 @@ import { DashboardPlugin } from '@vendure/dashboard/plugin';
 import { GraphiqlPlugin } from '@vendure/graphiql-plugin';
 import 'dotenv/config';
 import path from 'path';
+import { MidtransPlugin } from './plugins/midtrans/midtrans.plugin';
+import { RajaOngkirPlugin } from './plugins/rajaongkir/rajaongkir.plugin';
+import { SeoMetadataPlugin } from './plugins/seo-metadata/seo-metadata.plugin';
+import { ProductReviewPlugin } from './plugins/product-review/product-review.plugin';
+import { AbandonedCartRecoveryPlugin } from './plugins/abandoned-cart-recovery/abandoned-cart-recovery.plugin';
+import { abandonedCartRecoveryHandler } from './plugins/abandoned-cart-recovery/abandoned-cart-recovery.handler';
+import { abandonedCartRecoveryScanTask } from './plugins/abandoned-cart-recovery/abandoned-cart-recovery.task';
 
 const IS_DEV = process.env.APP_ENV === 'dev';
 const serverPort = +process.env.PORT || 3000;
@@ -60,6 +67,11 @@ export const config: VendureConfig = {
     paymentOptions: {
         paymentMethodHandlers: [dummyPaymentHandler],
     },
+    schedulerOptions: {
+        tasks: [
+            abandonedCartRecoveryScanTask,
+        ],
+    },
     // When adding or altering custom field definitions, the database will
     // need to be updated. See the "Migrations" section in README.md.
     customFields: {},
@@ -80,15 +92,18 @@ export const config: VendureConfig = {
             devMode: true,
             outputPath: path.join(__dirname, '../static/email/test-emails'),
             route: 'mailbox',
-            handlers: defaultEmailHandlers,
+            handlers: [
+                ...defaultEmailHandlers,
+                abandonedCartRecoveryHandler,
+            ],
             templateLoader: new FileBasedTemplateLoader(path.join(__dirname, '../static/email/templates')),
             globalTemplateVars: {
                 // The following variables will change depending on your storefront implementation.
                 // Here we are assuming a storefront running at http://localhost:8080.
                 fromAddress: '"example" <noreply@example.com>',
-                verifyEmailAddressUrl: 'http://localhost:8080/verify',
-                passwordResetUrl: 'http://localhost:8080/password-reset',
-                changeEmailAddressUrl: 'http://localhost:8080/verify-email-address-change'
+                verifyEmailAddressUrl: 'http://localhost:5173/verify',
+                passwordResetUrl: 'http://localhost:5173/password-reset',
+                changeEmailAddressUrl: 'http://localhost:5173/verify-email-address-change'
             },
         }),
         DashboardPlugin.init({
@@ -97,5 +112,12 @@ export const config: VendureConfig = {
                 ? path.join(__dirname, '../dist/dashboard')
                 : path.join(__dirname, 'dashboard'),
         }),
+        MidtransPlugin,
+        RajaOngkirPlugin,
+        SeoMetadataPlugin.init({
+            defaultOgImageUrl: process.env.SEO_DEFAULT_OG_IMAGE_URL ?? '',
+        }),
+        ProductReviewPlugin,
+        AbandonedCartRecoveryPlugin.init({}),
     ],
 };
