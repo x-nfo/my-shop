@@ -14,14 +14,15 @@ Useful links:
 * `/src` contains the source code of your Vendure server. All your custom code and plugins should reside here.
 * `/static` contains static (non-code) files such as assets (e.g. uploaded images) and email templates.
 
+## Quick Setup
+
+1. **Start Database**: `docker compose up -d postgres_db`
+2. **Install Dependencies**: `npm install`
+3. **Run Migrations**: `npm run migrate`
+4. **Seed Initial Data**: `npm run populate`
+5. **Start Dev Server**: `npm run dev`
+
 ## Development
-
-```
-npm run dev
-```
-
-will start the Vendure server and [worker](https://www.vendure.io/docs/developer-guide/vendure-worker/) processes from
-the `src` directory.
 
 ## Build
 
@@ -134,6 +135,33 @@ data that you cannot lose.
 ---
 
 You can also run any pending migrations manually, without starting the server via the "vendure migrate" command.
+
+---
+
+## Abandoned Cart Recovery
+
+This feature automatically sends recovery emails to customers who have left items in their cart for a certain period (default 24 hours).
+
+### Requirements
+
+To run the abandoned cart recovery system, both the server and the worker must be running:
+
+1. **Start Dev Server**: `npm run dev:server`
+2. **Start Dev Worker**: `npm run dev:worker` (Important: The worker handles the scheduled tasks and email sending)
+
+### Verification
+
+You can verify the feature by running the smoke test:
+
+```bash
+npm run test:abandoned-cart:smoke
+```
+
+To manually verify the email delivery:
+1. Ensure the server and worker are running.
+2. The system scans for abandoned carts every hour.
+3. Check the `static/email/test-emails` directory for any generated recovery emails (in dev mode).
+4. You can also monitor the worker logs for `Found X eligible abandoned orders`.
 
 ---
 

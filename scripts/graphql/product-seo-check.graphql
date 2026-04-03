@@ -1,0 +1,12 @@
+query ProductSeoCheck($slug: String!) {
+  product(slug: $slug) {
+    id
+    name
+    slug
+    seo {
+      title
+      description
+      ogImageUrl
+    }
+  }
+}

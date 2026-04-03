@@ -1,0 +1,12 @@
+query CollectionSeoCheck($slug: String!) {
+  collection(slug: $slug) {
+    id
+    name
+    slug
+    seo {
+      title
+      description
+      ogImageUrl
+    }
+  }
+}

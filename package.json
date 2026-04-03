@@ -12,7 +12,12 @@
     "start:server": "node ./dist/index.js",
     "start:worker": "node ./dist/index-worker.js",
     "start": "concurrently npm:start:*",
-    "populate": "ts-node ./src/populate.ts"
+    "populate": "ts-node ./src/populate.ts",
+    "migrate": "ts-node ./src/migrate.ts",
+    "migrate:and:start": "npm run migrate && npm run dev",
+    "test:seo:smoke": "bash scripts/smoke-seo-shop-api.sh",
+    "test:review:smoke": "bash scripts/smoke-review-shop-api.sh",
+    "test:abandoned-cart:smoke": "bash scripts/smoke-abandoned-cart-recovery.sh"
   },
   "dependencies": {
     "@vendure/asset-server-plugin": "3.6.0",
@@ -21,6 +26,7 @@
     "@vendure/email-plugin": "3.6.0",
     "@vendure/graphiql-plugin": "3.6.0",
     "dotenv": "17.4.0",
+    "midtrans-client": "^1.4.3",
     "pg": "8.20.0"
   },
   "devDependencies": {

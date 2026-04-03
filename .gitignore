@@ -1,7 +1,11 @@
 node_modules
 dist
+docs
 admin-ui
 static/assets
 static/email/test-emails
 .vendure/
 .env
+.codex
+create_issues.py
+issue.md

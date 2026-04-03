@@ -1,0 +1,10 @@
+name,slug,description,assets,facets,optionGroups,optionValues,sku,price,taxCategory,stockOnHand,trackInventory,variantAssets,variantFacets
+"Sneakers Classic","sneakers-classic","A classic pair of sneakers.","https://images.unsplash.com/photo-1542291026-7eec264c27ff","category:Footwear","size|color","41|Blue","SNK-01-B",599000,"standard",100,true,,
+,,,,,,"41|Red","SNK-01-R",599000,"standard",100,true,,
+,,,,,,"42|Blue","SNK-02-B",599000,"standard",100,true,,
+,,,,,,"42|Red","SNK-02-R",599000,"standard",100,true,,
+"Wireless Headphones","wireless-headphones","High-quality wireless headphones.","https://images.unsplash.com/photo-1505740420928-5e560c06d30e","category:Electronics","color","Black","HP-01-BK",1200000,"standard",50,true,,
+,,,,,,"White","HP-01-WH",1200000,"standard",50,true,,
+"T-Shirt Basic","t-shirt-basic","A simple and comfortable basic t-shirt.","https://images.unsplash.com/photo-1521572267360-ee0c2909d518","category:Apparel","size","S","TS-01-S",150000,"standard",200,true,,
+,,,,,,"M","TS-01-M",150000,"standard",200,true,,
+,,,,,,"L","TS-01-L",150000,"standard",200,true,,
