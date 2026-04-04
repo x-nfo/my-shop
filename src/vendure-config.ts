@@ -16,6 +16,7 @@ import { RajaOngkirPlugin } from './plugins/rajaongkir/rajaongkir.plugin';
 import { SeoMetadataPlugin } from './plugins/seo-metadata/seo-metadata.plugin';
 import { ProductReviewPlugin } from './plugins/product-review/product-review.plugin';
 import { AbandonedCartRecoveryPlugin } from './plugins/abandoned-cart-recovery/abandoned-cart-recovery.plugin';
+import { ManualBankTransferPlugin } from './plugins/manual-bank-transfer/manual-bank-transfer.plugin';
 import { abandonedCartRecoveryHandler } from './plugins/abandoned-cart-recovery/abandoned-cart-recovery.handler';
 import { abandonedCartRecoveryScanTask } from './plugins/abandoned-cart-recovery/abandoned-cart-recovery.task';
 
@@ -119,5 +120,6 @@ export const config: VendureConfig = {
         }),
         ProductReviewPlugin,
         AbandonedCartRecoveryPlugin.init({}),
+        ManualBankTransferPlugin,
     ],
 };

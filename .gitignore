@@ -1,6 +1,6 @@
 node_modules
 dist
-docs
+docs/
 admin-ui
 static/assets
 static/email/test-emails
@@ -9,3 +9,4 @@ static/email/test-emails
 .codex
 create_issues.py
 issue.md
+vendure-import-error.log

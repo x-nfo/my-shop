@@ -165,6 +165,40 @@ To manually verify the email delivery:
 
 ---
 
+## Manual Bank Transfer Verification
+
+This feature adds a manual transfer payment method, transfer proof upload, and a Dashboard verification panel for admins.
+
+### Requirements
+
+1. Run the Vendure server: `npm run dev:server`
+2. Run the Dashboard build/dev flow if you want to verify the admin UI: `npm run dev:dashboard`
+
+### Smoke Verification
+
+You can verify the schema and custom-field wiring with:
+
+```bash
+npm run test:manual-transfer:smoke
+```
+
+This smoke test checks:
+
+1. `Order` custom fields for manual transfer proof and verification metadata
+2. Shop API mutation `submitManualTransferProof`
+3. Admin API mutations `verifyManualTransferPayment` and `rejectManualTransferProof`
+
+### Manual End-to-End Verification
+
+1. Ensure `npm run dev:server` is running.
+2. Create or reuse a payment method configured with handler code `manual-bank-transfer`.
+3. Place an order using that payment method so the order gets an authorized payment.
+4. Upload proof of transfer from the Shop API/storefront flow.
+5. Open the order in Dashboard and verify the `Manual Transfer` panel appears.
+6. Approve via `Verify & Settle` and confirm the payment transitions to `Settled`.
+
+---
+
 ## Troubleshooting
 
 ### Error: Could not load the "sharp" module using the \[OS\]-x\[Architecture\] runtime when running Vendure server.
@@ -172,4 +206,3 @@ To manually verify the email delivery:
 - Make sure your Node version is ^18.17.0 || ^20.3.0 || >=21.0.0 to support the Sharp library.
 - Make sure your package manager is up to date.
 - **Not recommended**: if none of the above helps to resolve the issue, install sharp specifying your machines OS and Architecture. For example: `pnpm install sharp --config.platform=linux --config.architecture=x64` or `npm install sharp --os linux --cpu x64`
-

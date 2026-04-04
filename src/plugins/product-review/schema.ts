@@ -32,12 +32,17 @@ export const shopApiExtensions = gql`
     }
 
     extend type Query {
-        productReviews(productId: ID!, options: ReadOnlyListOptions): ProductReviewList!
+        productReviews(productId: ID!, options: ProductReviewListOptions): ProductReviewList!
     }
 
     extend type Product {
         averageRating: Float!
         reviewCount: Int!
+    }
+
+    input ProductReviewListOptions {
+        skip: Int
+        take: Int
     }
 `;
 

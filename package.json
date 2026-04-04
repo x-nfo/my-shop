@@ -17,7 +17,8 @@
     "migrate:and:start": "npm run migrate && npm run dev",
     "test:seo:smoke": "bash scripts/smoke-seo-shop-api.sh",
     "test:review:smoke": "bash scripts/smoke-review-shop-api.sh",
-    "test:abandoned-cart:smoke": "bash scripts/smoke-abandoned-cart-recovery.sh"
+    "test:abandoned-cart:smoke": "bash scripts/smoke-abandoned-cart-recovery.sh",
+    "test:manual-transfer:smoke": "bash scripts/smoke-manual-transfer.sh"
   },
   "dependencies": {
     "@vendure/asset-server-plugin": "3.6.0",
