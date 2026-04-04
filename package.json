@@ -21,12 +21,15 @@
     "test:manual-transfer:smoke": "bash scripts/smoke-manual-transfer.sh"
   },
   "dependencies": {
+    "@types/crypto-js": "^4.2.2",
     "@vendure/asset-server-plugin": "3.6.0",
     "@vendure/core": "3.6.0",
     "@vendure/dashboard": "3.6.0",
     "@vendure/email-plugin": "3.6.0",
     "@vendure/graphiql-plugin": "3.6.0",
+    "crypto-js": "^4.2.0",
     "dotenv": "17.4.0",
+    "graphql-tag": "^2.12.6",
     "midtrans-client": "^1.4.3",
     "pg": "8.20.0"
   },
